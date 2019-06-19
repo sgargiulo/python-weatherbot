@@ -11,7 +11,7 @@ import os
 #
 # @param String endpoint Valid Accuweather API endpoint
 # @param String query What to send to the endpoint
-# @returns Dict or False
+# @returns Dict, List or False
 #
 def accuweather_api(endpoint, query=False):
     api_key = os.environ["ACCUWEATHER_KEY"]
