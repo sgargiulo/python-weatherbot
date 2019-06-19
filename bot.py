@@ -59,14 +59,13 @@ def geocode_api(endpoint, query=False):
         pprint(r)
         return False
 
+
 #
 # Geocodes the provided location to lat, lng for Dark Sky's API
 #
 # @param String loc What to send to the endpoint (city, state or ZIP)
 # @returns Dict
 #
-
-
 def get_location(loc):
     r = geocode_api("geocode", loc)
 
