@@ -69,7 +69,7 @@ def geocode_api(endpoint, query=False):
 def get_location(loc):
     r = geocode_api("geocode", loc)
 
-    if(r != False):
+    if r != False:
         return r["results"][0]
     else:
         raise Exception("That location could not be found")
