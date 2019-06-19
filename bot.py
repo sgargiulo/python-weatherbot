@@ -82,7 +82,7 @@ def get_location(loc):
 # @returns Dict or False
 #
 def get_current_conditions(loc):
-    if(id == False):
+    if loc == False:
         return False
 
     endpoint = f"forecast"
