@@ -2,9 +2,6 @@
 
 A Twitterbot for sending Dark Sky API responses to users via Twitter.
 
-You need the following environment variables for this script to run
+You'll need API keys for the Geocodio API and Dark Sky API. An .env-sample file has been provided for you -- you can just duplicate it and name it `.env`
 
-```
-GEOCODIO_API="YOUR GEOCODIO API KEY"
-DARKSKY_API="YOUR DARK SKY API KEY"
-```
+You can sign up for a Dark Sky API key at https://darksky.net/dev/register. You can sign up for a geocodio API key at https://dash.geocod.io/register
