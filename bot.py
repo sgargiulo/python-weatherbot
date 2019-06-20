@@ -2,6 +2,11 @@ import requests
 import os
 import re
 from pprint import pprint
+from dotenv import load_dotenv
+
+
+# Load the keys from the env file
+load_dotenv()
 
 
 #
@@ -16,7 +21,7 @@ from pprint import pprint
 # @returns Dict, List or False
 #
 def darksky_api(endpoint, query=False):
-    api_key = os.environ["DARKSKY_API"]
+    api_key = os.environ.get("DARKSKY_KEY")
 
     if query == False:
         raise Exception("You must provide lat and lng")
@@ -44,7 +49,7 @@ def darksky_api(endpoint, query=False):
 # @returns Dict, List or False
 #
 def geocode_api(endpoint, query=False):
-    api_key = os.environ["GEOCODIO_API"]
+    api_key = os.environ.get("GEOCODIO_KEY")
 
     url = f"https://api.geocod.io/v1.3/{endpoint}?api_key={api_key}"
 
