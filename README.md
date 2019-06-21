@@ -54,4 +54,4 @@ python bot.py
 ```
 
 
-## [License](LICENSE.md)
+## [License](LICENSE)
