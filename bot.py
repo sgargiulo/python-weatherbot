@@ -122,7 +122,11 @@ def build_data(loc):
 #
 def build_response(data):
     # wx_adjective = build_wx_adjectives(data["current"][0]["WeatherText"])
-    response = f'Right now, in {data["location"]["address_components"]["city"]}, {data["location"]["address_components"]["state"]}, it is {data["current"]["currently"]["summary"].lower()} and feels like {round(int(data["current"]["currently"]["apparentTemperature"]))} degrees. You can expect {data["current"]["hourly"]["summary"].lower()}'
+
+    if "city" in data["location"]["address_components"]:
+        response = f'Right now, in {data["location"]["address_components"]["city"]}, {data["location"]["address_components"]["state"]}, it is {data["current"]["currently"]["summary"].lower()} and feels like {round(int(data["current"]["currently"]["apparentTemperature"]))} degrees. You can expect {data["current"]["hourly"]["summary"].lower()}'
+    else:
+        response = f"Sorry, we couldn't find that location. Please make sure you entered a valid city and state or zipcode and try again"
     return response
 
 
