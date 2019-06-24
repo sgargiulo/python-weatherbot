@@ -121,7 +121,6 @@ def build_data(loc):
 # @returns String
 #
 def build_response(data):
-    # wx_adjective = build_wx_adjectives(data["current"][0]["WeatherText"])
 
     sunblock = False
     umbrella = False
