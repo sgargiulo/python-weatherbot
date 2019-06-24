@@ -12,10 +12,8 @@ load_dotenv()
 #
 # Calls the darksky api
 #
-# Global function that calls the specified endpoint
-# and passes the specified query. The API key is required and is
-# captured from the DARKSKY_API environment variable.
-# @returns Dict, List or False
+# Global function that calls the specified endpoint and passes the specified query. The API key is required and is captured from the DARKSKY_API environment variable.
+# returns Dict, List or False
 #
 def darksky_api(query=False):  # this will prevent blank calls from going to the API
     api_key = os.environ.get("DARKSKY_KEY")
@@ -41,9 +39,7 @@ def darksky_api(query=False):  # this will prevent blank calls from going to the
 #
 # Calls the geocodio api
 #
-# Global function that calls the specified endpoint
-# and passes the specified query. The API key is required and is
-# captured from the GEOCODIO_API environment variable.
+# Global function that calls the specified endpoint and passes the specified query. The API key is required and is captured from the GEOCODIO_API environment variable.
 #
 # @param String query What to send to the endpoint
 # @returns Dict, List or False
@@ -77,13 +73,11 @@ def get_location(loc):
     r = geocode_api(loc)
 
     if r != False:
-        # The geocode API responds with the original query and a LIST of results
-        # Here, we're only taking the first result, as it is the most accurate
+        # The geocode API responds with the original query and a LIST of results. Here, we're only taking the first result, as it is the most accurate
         # https://www.geocod.io/docs/#single-address for more details
         return r["results"][0]
     else:
-        # If the geocode API failed to find a lat and lng for the entered location
-        # throw an error and stop the program
+        # If the geocode API failed to find a lat and lng for the entered location throw an error and stop the program
         #raise Exception("That location could not be found")
         pprint("That location could not be found")
         exit()
