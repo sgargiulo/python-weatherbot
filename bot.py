@@ -32,7 +32,9 @@ def darksky_api(query=False):  # this will prevent blank calls from going to the
     if r.status_code in [200, 301, 302, 304]:
         return r.json()
     else:
-        pprint(r)
+        #pprint(r)
+        pprint("That location could not be found")
+        exit()
         return False
 
 
@@ -59,7 +61,9 @@ def geocode_api(query=False):
     if r.status_code in [200, 301, 302, 304]:
         return r.json()
     else:
-        pprint(r)
+        #pprint(r)
+        print("Sorry, we couldn't find that location. Please make sure you entered a valid city and state or zipcode and try again")
+        exit()
         return False
 
 
@@ -92,6 +96,8 @@ def get_location(loc):
 #
 def get_current_conditions(loc=False):
     if loc == False:
+        pprint("That location could not be found")
+        exit()
         return False
 
     conditions = darksky_api(f"{loc['lat']}, {loc['lng']}")
