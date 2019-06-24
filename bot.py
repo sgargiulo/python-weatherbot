@@ -16,17 +16,16 @@ load_dotenv()
 # and passes the specified query. The API key is required and is
 # captured from the DARKSKY_API environment variable.
 #
-# @param String endpoint Valid Darksky API endpoint
 # @param String query What to send to the endpoint
 # @returns Dict, List or False
 #
-def darksky_api(endpoint, query=False):
+def darksky_api(query=False):
     api_key = os.environ.get("DARKSKY_KEY")
 
     if query == False:
         raise Exception("You must provide lat and lng")
 
-    url = f"https://api.darksky.net/{endpoint}/{api_key}/{query}"
+    url = f"https://api.darksky.net/forecast/{api_key}/{query}"
 
     r = requests.get(url)
 
@@ -48,13 +47,13 @@ def darksky_api(endpoint, query=False):
 # @param String query What to send to the endpoint
 # @returns Dict, List or False
 #
-def geocode_api(endpoint, query=False):
+def geocode_api(query=False):
     api_key = os.environ.get("GEOCODIO_KEY")
 
-    url = f"https://api.geocod.io/v1.3/{endpoint}?api_key={api_key}"
+    url = f"https://api.geocod.io/v1.3/geocode?api_key={api_key}"
 
     if(query != False):
-        url += f"&q={query}"
+        url = f"{url}&q={query}"
 
     r = requests.get(url)
 
@@ -72,11 +71,16 @@ def geocode_api(endpoint, query=False):
 # @returns Dict
 #
 def get_location(loc):
-    r = geocode_api("geocode", loc)
+    r = geocode_api(loc)
 
     if r != False:
+        # The geocode API responds with the original query and a LIST of results
+        # Here, we're only taking the first result, as it is the most accurate
+        # https://www.geocod.io/docs/#single-address for more details
         return r["results"][0]
     else:
+        # If the geocode API failed to find a lat and lng for the entered location
+        # throw an error and stop the program
         raise Exception("That location could not be found")
 
 
@@ -86,12 +90,11 @@ def get_location(loc):
 # @param Integer|String id Accuweather location key
 # @returns Dict or False
 #
-def get_current_conditions(loc):
+def get_current_conditions(loc=False):
     if loc == False:
         return False
 
-    endpoint = f"forecast"
-    conditions = darksky_api(endpoint, f"{loc['lat']}, {loc['lng']}")
+    conditions = darksky_api(f"{loc['lat']}, {loc['lng']}")
     return conditions
 
 
