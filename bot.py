@@ -105,7 +105,7 @@ def get_current_conditions(loc=False):
 # @returns Dict or Error
 #
 def build_data(loc):
-    try:
+    try:           #https://www.w3schools.com/python/python_try_except.asp
         location = get_location(loc)
         data = {
             "location": location,

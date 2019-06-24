@@ -32,12 +32,6 @@ Then install the requirements
 pip install -r ./requirements.txt
 ```
 
-Or you can do it all in one step by firing
-
-```sh
-bash ./setup
-```
-
 ## Setup Continued
 
 You'll need API keys for the Geocodio API and Dark Sky API. An .env-sample file has been provided for you -- you can just duplicate it and name it `.env`
