@@ -144,7 +144,9 @@ def build_wx_adjectives(wx):
         return wx
 
 
-data = build_data("10025")
+location = input("Please enter your city and state or zip: ")
+
+data = build_data(location)
 response = build_response(data)
 
 print(response)
