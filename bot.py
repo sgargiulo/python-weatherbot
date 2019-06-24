@@ -15,11 +15,9 @@ load_dotenv()
 # Global function that calls the specified endpoint
 # and passes the specified query. The API key is required and is
 # captured from the DARKSKY_API environment variable.
-#
-# @param String query What to send to the endpoint
 # @returns Dict, List or False
 #
-def darksky_api(query=False):
+def darksky_api(query=False):  # this will prevent blank calls from going to the API
     api_key = os.environ.get("DARKSKY_KEY")
 
     if query == False:
@@ -43,7 +41,6 @@ def darksky_api(query=False):
 # and passes the specified query. The API key is required and is
 # captured from the GEOCODIO_API environment variable.
 #
-# @param String endpoint Valid Geocodio API endpoint
 # @param String query What to send to the endpoint
 # @returns Dict, List or False
 #
@@ -155,24 +152,6 @@ def build_response(data):
         response = f"Sorry, we couldn't find that location. Please make sure you entered a valid city and state or zipcode and try again"
 
     return response
-
-
-#
-# Takes common weather conditions and returns them in their adjective form
-#
-# @param String wx weather condition
-# @returns String
-#
-def build_wx_adjectives(wx):
-    map = {
-        "Rain": "Rainy",
-        "Snow": "Snowy"
-    }
-
-    if wx in map:
-        return map["wx"]
-    else:
-        return wx
 
 
 location = input("Please enter your city and state or zip: ")
