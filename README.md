@@ -1,6 +1,6 @@
 # Python Weatherbot
 
-A Twitterbot for sending Dark Sky API responses to users via Twitter.
+A weaterbot used to obtain forecasts 
 
 ## Prerequisites
 
