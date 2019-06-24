@@ -21,7 +21,9 @@ def darksky_api(query=False):  # this will prevent blank calls from going to the
     api_key = os.environ.get("DARKSKY_KEY")
 
     if query == False:
-        raise Exception("You must provide lat and lng")
+        #raise Exception("You must provide lat and lng")
+        pprint("You must provide lat and lng")
+        exit()
 
     url = f"https://api.darksky.net/forecast/{api_key}/{query}"
 
@@ -78,8 +80,9 @@ def get_location(loc):
     else:
         # If the geocode API failed to find a lat and lng for the entered location
         # throw an error and stop the program
-        raise Exception("That location could not be found")
-
+        #raise Exception("That location could not be found")
+        pprint("That location could not be found")
+        exit()
 
 #
 # Get the current conditions for the location
