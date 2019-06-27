@@ -46,6 +46,8 @@ Start the bot
 ```sh
 python bot.py
 ```
+Enter in zip code or city, state
 
+If an invalid entry is entered, you will be notified and have to try again.
 
 ## [License](LICENSE)
