@@ -1,6 +1,6 @@
 # Python Weatherbot
 
-A weaterbot used to obtain forecasts 
+A weaterbot used to obtain forecasts and suggested equipment for the day such as an umbrella and/or sunblock. 
 
 ## Prerequisites
 
