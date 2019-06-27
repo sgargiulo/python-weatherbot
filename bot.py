@@ -114,7 +114,8 @@ def build_data(loc):
 
         return data
     except:
-        print("Something went wrong. Please check that you've provided a valid location")
+        #print("Something went wrong. Please check that you've provided a valid location")
+        exit()
 
 
 #
@@ -125,19 +126,17 @@ def build_data(loc):
 #
 def build_response(data):
 
+    
     sunblock = False
     umbrella = False
 
     if "rain" in data["current"]["currently"]["summary"].lower():
         umbrella = True
-
     if data["current"]["currently"]["uvIndex"] > 5:
         sunblock = True
-
     for hour in data["current"]["hourly"]["data"]:
         if hour["uvIndex"] > 5:
             sunblock = True
-
         # needed to make the summary lower case to account for when the word rain could have capital letters
         if "rain" in hour["summary"].lower():
             umbrella = True
